@@ -4,19 +4,28 @@ import countries from '../templates/countries.hbs';
 import refs from './refs';
 
 function updateCountriesItems(arr) {
+  if (arr === undefined) {
+    return;
+  }
   if (arr.length >= 10) {
     notifications.onOverflowList();
   } else if (arr.length < 10 && arr.length !== 1) {
-    refs.listCountries.innerHTML = '';
-    const countriesItemsTemplate = countriesItems(arr);
-    refs.listCountries.insertAdjacentHTML('beforeend', countriesItemsTemplate);
+    onListCountries(arr);
   } else if (arr.length === 1) {
-    refs.listCountries.innerHTML = '';
-    const countriesTemplate = countries(arr);
-    refs.listCountries.insertAdjacentHTML('beforeend', countriesTemplate);
+    onOnlyOneCountrie(arr);
   } else {
     notifications.onNotFound();
   }
+  console.log(arr);
 }
-
+function onListCountries(el) {
+  refs.listCountries.innerHTML = '';
+  const countriesItemsTemplate = countriesItems(el);
+  refs.listCountries.insertAdjacentHTML('beforeend', countriesItemsTemplate);
+}
+function onOnlyOneCountrie(el) {
+  refs.listCountries.innerHTML = '';
+  const countriesTemplate = countries(el);
+  refs.listCountries.insertAdjacentHTML('beforeend', countriesTemplate);
+}
 export default updateCountriesItems;

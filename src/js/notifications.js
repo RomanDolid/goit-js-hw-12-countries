@@ -18,7 +18,7 @@ const notifications = {
   },
   onError() {
     PNotify.error({
-      title: 'Произошла ошибка',
+      title: 'Что-то пошло не так :(',
       text: 'Повторите запрос',
     });
   },
