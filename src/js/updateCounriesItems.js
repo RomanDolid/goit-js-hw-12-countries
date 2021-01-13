@@ -16,7 +16,6 @@ function updateCountriesItems(arr) {
   } else {
     notifications.onNotFound();
   }
-  console.log(arr);
 }
 function onListCountries(el) {
   refs.listCountries.innerHTML = '';
