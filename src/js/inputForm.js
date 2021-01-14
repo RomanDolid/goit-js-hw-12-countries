@@ -9,6 +9,8 @@ refs.input.addEventListener(
     event.preventDefault();
 
     const inputValue = refs.input.value;
-    fetchCountries(inputValue).then(data => updateCountriesItems(data));
+    if(inputValue !== '' && inputValue !== ' ') {
+      fetchCountries(inputValue).then(data => updateCountriesItems(data));
+    }
   }, 500),
 );
