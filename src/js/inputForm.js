@@ -9,8 +9,13 @@ refs.input.addEventListener(
     event.preventDefault();
 
     const inputValue = refs.input.value;
-    if(inputValue !== '' && inputValue !== ' ') {
+    if(onCheckValue(inputValue)) {
       fetchCountries(inputValue).then(data => updateCountriesItems(data));
     }
   }, 500),
 );
+function onCheckValue (el) {
+  if(el !== '' && el.indexOf(' ') < 0) {
+    return true
+  }
+}
